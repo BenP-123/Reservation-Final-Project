@@ -94,4 +94,4 @@ export const ReservationForm = ({addReservation}) => {
     );
 }
 
-export default CardForm;
+export default ReservationForm;

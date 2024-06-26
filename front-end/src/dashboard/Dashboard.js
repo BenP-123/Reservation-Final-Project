@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, Redirect, useLocation } from 'react-router-dom';
 import { listReservations } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
-import formatReservationDate from './formatReservationDate';
+import formatReservationDate from '../utils/format-reservation-date';
 
 /**
  * Defines the dashboard page.
@@ -15,7 +15,6 @@ function Dashboard() {
   const [reservationsError, setReservationsError] = useState(null);
 
   const { date } = useParams();
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(loadDashboard, [date, location]);
@@ -34,18 +33,18 @@ function Dashboard() {
     const nextDate = new Date(date);
     nextDate.setDate(nextDate.getDate() + 1);
     const formattedNextDate = formatReservationDate(nextDate);
-    navigate(`/dashboard?date=${formattedNextDate.reservation_date}`);
+    Redirect(`/dashboard?date=${formattedNextDate.reservation_date}`);
   };
 
   const handlePrevious = () => {
     const prevDate = new Date(date);
     prevDate.setDate(prevDate.getDate() - 1);
     const formattedPrevDate = formatReservationDate(prevDate);
-    navigate(`/dashboard?date=${formattedPrevDate.reservation_date}`);
+    Redirect(`/dashboard?date=${formattedPrevDate.reservation_date}`);
   };
 
   const handleToday = () => {
-    navigate('/dashboard');
+    Redirect('/dashboard');
   };
 
   return (
