@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Redirect, useLocation } from 'react-router-dom';
-import { listReservations } from "../utils/api";
+import { listReservations, listTables } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
-import formatReservationDate from '../utils/format-reservation-date';
+import useQuery from '../utils/useQuery.js';
+
+import DateButtons from "./DateButtons";
+import CreateReservationsList from "../layout/reservations/CreateReservationsList.js";
+import CreateTablesList from "../layout/tables/CreateTablesList.js";
 
 /**
  * Defines the dashboard page.
@@ -10,55 +13,73 @@ import formatReservationDate from '../utils/format-reservation-date';
  *  the date for which the user wants to view reservations.
  * @returns {JSX.Element}
  */
-function Dashboard() {
+function Dashboard({ date }) {
   const [reservations, setReservations] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
 
-  const { date } = useParams();
-  const location = useLocation();
+  const [tables, setTables] = useState([]);
+  const [tablesError, setTablesError] = useState(null);
 
-  useEffect(loadDashboard, [date, location]);
+  const query = useQuery();
+  const queryDate = query.get("date");
 
-  function loadDashboard() {
-    const abortController = new AbortController();
-    setReservationsError(null);
-    let selectedDate = date ? new Date(date) : new Date();
-    listReservations(selectedDate.toISOString().split('T')[0], abortController.signal)
-      .then(setReservations)
-      .catch(setReservationsError);
-    return () => abortController.abort();
+  if(queryDate){
+    date = queryDate;
   }
 
-  const handleNext = () => {
-    const nextDate = new Date(date);
-    nextDate.setDate(nextDate.getDate() + 1);
-    const formattedNextDate = formatReservationDate(nextDate);
-    Redirect(`/dashboard?date=${formattedNextDate.reservation_date}`);
-  };
+  useEffect(() => {
+    const abortController = new AbortController();
 
-  const handlePrevious = () => {
-    const prevDate = new Date(date);
-    prevDate.setDate(prevDate.getDate() - 1);
-    const formattedPrevDate = formatReservationDate(prevDate);
-    Redirect(`/dashboard?date=${formattedPrevDate.reservation_date}`);
-  };
+    async function loadReservations(){
+      setReservationsError(null);
+      try{
+        const data = await listReservations({ date }, abortController.signal);
+        setReservations(data);
+      }
+      catch(error){
+        setReservationsError(error);
+      }
+    }
+    loadReservations();
+    return () => abortController.abort();
+  }, [date]);
 
-  const handleToday = () => {
-    Redirect('/dashboard');
-  };
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    async function loadTables(){
+      setTablesError(null);
+      try{
+        const data = await listTables(abortController.signal);
+        setTables(data);
+      }
+      catch(error){
+        setTablesError(error);
+      }
+    }
+    loadTables();
+    return () => abortController.abort();
+  }, []);
+
+  const filterReservations = reservations.filter((reservation) => 
+    reservation.status !== "finished"
+  );
 
   return (
     <main>
       <h1>Dashboard</h1>
       <div className="d-md-flex mb-3">
-        <h4 className="mb-0">Reservations for date</h4>
+        <h4 className="mb-0">Reservations for {date}:</h4>
       </div>
       <ErrorAlert error={reservationsError} />
-      <button onClick={handlePrevious}>Previous</button>
-      <button onClick={handleToday}>Today</button>
-      <button onClick={handleNext}>Next</button>
+      <DateButtons date={date}/>
+      <CreateReservationsList reservations={filterReservations}/>
       <br></br>
-      {JSON.stringify(reservations)}
+      <div>
+        <h4>Tables:</h4>
+        <ErrorAlert error={tablesError} />
+        <CreateTablesList tables={tables} />
+      </div>
     </main>
   );
 }

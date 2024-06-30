@@ -50,5 +50,8 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "cross-env": "^7.0.3"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.24.0"
   }
 }
