@@ -29,8 +29,8 @@ export default function EditReservation(){
                 const data = await readReservation(reservation_id, abortController.signal);
                 const formattedTime = formatAsTime(data.reservation_time);
                 const formattedDate = formatAsDate(data.reservation_date);
-                setReservation({
-                    ...reservation,
+                setReservation(previousReservation => ({
+                    ...previousReservation,
                     first_name: data.first_name,
                     last_name: data.last_name,
                     mobile_number: data.mobile_number,
@@ -38,7 +38,7 @@ export default function EditReservation(){
                     reservation_time: formattedTime,
                     people: data.people,
                     status: data.status,
-                  });
+                  }));
             } 
             catch(error){
                 return <ErrorAlert error={error} />;
@@ -46,7 +46,7 @@ export default function EditReservation(){
         }
         loadReservation();
         return () => abortController.abort();
-    });
+    }, [reservation_id]);
 
   async function submitHandler(event){
     const abortController = new AbortController();

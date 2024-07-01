@@ -30,8 +30,6 @@ export default function NewReservation() {
       people: Number(reservation.people), 
     };
 
-    console.log("new reservation:" + Object.keys(newReservation));
-
     try {
       await createReservation(newReservation, abortController.signal);
     }
