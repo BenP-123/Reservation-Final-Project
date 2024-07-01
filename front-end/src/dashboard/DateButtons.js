@@ -14,7 +14,6 @@ export default function DateButtons({ date }){
             >Previous Day</button>
             <button type="button" 
                 onClick={() => {
-                    const prevDate = previous(date);
                     history.push(`/dashboard?date=${today()}`);
                 }}
             >Today</button>

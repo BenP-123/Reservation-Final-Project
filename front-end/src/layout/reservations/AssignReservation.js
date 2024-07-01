@@ -8,20 +8,9 @@ export default function AssignReservation(){
     const history = useHistory();
     const { reservation_id } = useParams();
 
-    const [reservation, setReservation] = useState({});
     const [tableId, setTableId] = useState(0);
     const [tables, setTables] = useState([]);
     const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const abortController = new AbortController();
-        async function loadReservation(){
-            const loadedReservation = await readReservation(reservation_id, abortController.signal);
-            setReservation(loadedReservation);
-        }
-        loadReservation();
-        return () => abortController.abort();
-    }, [reservation_id]);
 
     useEffect(() => {
         const abortController = new AbortController();

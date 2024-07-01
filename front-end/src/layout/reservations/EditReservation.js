@@ -46,7 +46,7 @@ export default function EditReservation(){
         }
         loadReservation();
         return () => abortController.abort();
-    },[reservation_id]);
+    });
 
   async function submitHandler(event){
     const abortController = new AbortController();
