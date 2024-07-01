@@ -39,7 +39,9 @@ export default function NewTable(){
             {error && <ErrorAlert error={error} />}
             <form onSubmit={submitHandler}>
                 <div>
-                    <label htmlFor="table_name">Table Name:</label>
+                    <label htmlFor="table_name">Table Name</label>
+                </div>
+                <div>
                     <input
                         name="table_name"
                         type="text"
@@ -51,6 +53,8 @@ export default function NewTable(){
                 <div>
                     <label
                         htmlFor="capacity">Capacity</label>
+                </div>
+                <div>
                     <input
                         name="capacity"
                         type="number"
@@ -61,8 +65,8 @@ export default function NewTable(){
                 </div>
                 <hr></hr>
                 <div>
-                    <button type="submit">Submit</button>
-                    <button type="button" onClick={cancelHandler}>Cancel</button>
+                    <button type="submit" className="btn btn-dark mx-1">Submit</button>
+                    <button type="button" onClick={cancelHandler} className="btn btn-dark mx-1">Cancel</button>
                 </div>
             </form>
         </div>

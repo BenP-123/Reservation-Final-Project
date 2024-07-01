@@ -1,15 +1,19 @@
 import ClearTable from "./ClearTable";
+import "./tables.css";
 
 export default function PrintTable({ table }){
     const { table_name, capacity, table_id, reservation_id } = table;
 
     return(
-        <tr>
-            <td>{table_name}</td>
-            <td>{capacity}</td>
-            <td>{table_id}</td>
-            <td data-table-id-status={table_id}>{reservation_id ? "Occupied" : "Free"}</td>
-            <td>{reservation_id && <ClearTable table_id={table_id} />}</td>
-        </tr>
+        <div className="table card table-square">
+            <div className="card-body text-center">
+                <h4 className="card-title">{table_name}</h4>
+                <div className="card-subtitle my-2">
+                    <p data-table-id-status={table_id}>{reservation_id ? "Occupied" : "Free"}</p>
+                </div>
+                <p>Capacity: {capacity}</p>
+                <div>{reservation_id && <ClearTable table_id={table_id} />}</div>
+            </div>
+        </div>
     );
 }

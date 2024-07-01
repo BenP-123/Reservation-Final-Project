@@ -67,18 +67,21 @@ function Dashboard({ date }) {
 
   return (
     <main>
-      <h1>Dashboard</h1>
-      <div className="d-md-flex mb-3">
-        <h4 className="mb-0">Reservations for {date}:</h4>
-      </div>
-      <ErrorAlert error={reservationsError} />
+      <h1 className="my-2 text-center">Dashboard</h1>
       <DateButtons date={date}/>
+      <h4 className="mb-0 text-center">{date}</h4>
+
+      <div className="d-md-flex mb-3">
+      </div>
+      
+      <h4>Reservations:</h4>
       <CreateReservationsList reservations={filterReservations}/>
+      <ErrorAlert error={reservationsError} />
       <br></br>
       <div>
         <h4>Tables:</h4>
-        <ErrorAlert error={tablesError} />
         <CreateTablesList tables={tables} />
+        <ErrorAlert error={tablesError} />
       </div>
     </main>
   );

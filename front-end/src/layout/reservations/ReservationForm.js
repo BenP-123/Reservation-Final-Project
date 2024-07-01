@@ -19,7 +19,9 @@ export default function ReservationForm({ submitHandler, reservation, setReserva
       {error && <ErrorAlert error={error} />}
       <form onSubmit={submitHandler}>
         <div>
-          <label htmlFor="first_name">First Name:</label>
+          <label htmlFor="first_name">First Name</label>
+        </div>
+        <div>
           <input
             name="first_name"
             type="text"
@@ -27,10 +29,13 @@ export default function ReservationForm({ submitHandler, reservation, setReserva
             required
             value={reservation.first_name}
             onChange={handleChange}
+            style={{ marginBottom: "1rem" }}
           ></input>
         </div>
         <div>
-          <label htmlFor="last_name">Last Name:</label>
+          <label htmlFor="last_name">Last Name</label>
+        </div>
+        <div>
           <input
             name="last_name"
             type="text"
@@ -38,10 +43,13 @@ export default function ReservationForm({ submitHandler, reservation, setReserva
             required
             value={reservation.last_name}
             onChange={handleChange}
+            style={{ marginBottom: "1rem" }}
           ></input>
         </div>
         <div>
-          <label htmlFor="mobile_number">Mobile Number:</label>
+          <label htmlFor="mobile_number">Mobile Number</label>
+        </div>
+        <div>
           <input
             name="mobile_number"
             type="tel"
@@ -50,10 +58,13 @@ export default function ReservationForm({ submitHandler, reservation, setReserva
             required
             value={reservation.mobile_number}
             onChange={handleChange}
+            style={{ marginBottom: "1rem" }}
           ></input>
         </div>
         <div>
-          <label htmlFor="people">Party Size:</label>
+          <label htmlFor="people">Party Size</label>
+        </div>
+        <div>
           <input
             name="people"
             type="number"
@@ -62,10 +73,13 @@ export default function ReservationForm({ submitHandler, reservation, setReserva
             min="1"
             value={reservation.people}
             onChange={handleChange}
+            style={{ marginBottom: "1rem" }}
           ></input>
         </div>
         <div>
-          <label htmlFor="reservation_date">Date:</label>
+          <label htmlFor="reservation_date">Date</label>
+        </div>
+        <div>
           <input
             name="reservation_date"
             type="date"
@@ -73,10 +87,13 @@ export default function ReservationForm({ submitHandler, reservation, setReserva
             required
             value={reservation.reservation_date}
             onChange={handleChange}
+            style={{ marginBottom: "1rem" }}
           ></input>
         </div>
-        <div className="form-group">
-          <label htmlFor="reservation_time">Time:</label>
+        <div>
+          <label htmlFor="reservation_time">Time</label>
+        </div>
+        <div>
           <input
             name="reservation_time"
             type="time"
@@ -84,12 +101,13 @@ export default function ReservationForm({ submitHandler, reservation, setReserva
             required
             value={reservation.reservation_time}
             onChange={handleChange}
+            style={{ marginBottom: "1rem" }}
           ></input>
         </div>
         <hr></hr>
         <div>
-          <button type="submit">Submit</button>
-          <button type="button"onClick={cancelClickHandler}>Cancel</button>
+          <button type="submit" className="btn btn-dark mx-1">Submit</button>
+          <button type="button"onClick={cancelClickHandler} className="btn btn-dark mx-1">Cancel</button>
         </div>
       </form>
     </React.Fragment>

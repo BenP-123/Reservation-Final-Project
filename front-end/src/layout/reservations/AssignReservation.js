@@ -1,4 +1,4 @@
-import { readReservation, listTables, updateTable } from "../../utils/api";
+import { listTables, updateTable } from "../../utils/api";
 import ErrorAlert from "../ErrorAlert";
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";

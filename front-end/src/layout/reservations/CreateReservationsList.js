@@ -2,18 +2,19 @@ import PrintReservation from "./PrintReservation";
 
 export default function CreateReservationsList({ reservations = [] }){
     return(
-        <div>
-            <table>
+        <div className="table-responsive">
+            {reservations.length > 0 ? (
+            <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th>Reservation ID</th>
-                        <th>Name</th>
-                        <th>Mobile Number</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Party Size</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th scope="col" className="align-middle text-center">Reservation ID</th>
+                        <th scope="col" className="align-middle text-center">Name</th>
+                        <th scope="col" className="align-middle text-center">Mobile Number</th>
+                        <th scope="col" className="align-middle text-center">Date</th>
+                        <th scope="col" className="align-middle text-center">Time</th>
+                        <th scope="col" className="align-middle text-center">Party Size</th>
+                        <th scope="col" className="align-middle text-center">Status</th>
+                        <th scope="col" className="align-middle text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +23,9 @@ export default function CreateReservationsList({ reservations = [] }){
                     ))}
                 </tbody>
             </table>
+            ) : (
+                <h6>No reservations for selected date</h6>
+              )}
         </div>
     );
 }
