@@ -14,32 +14,32 @@ This project is the final capstone for the web development course through Chegg 
 
 
 ### Create new reservations:
-![create reservation](screenshots/createReservation)
+![create reservation](screenshots/createReservation.png)
 
 ### Display reservations on the dashboard
-![display reservation](screenshots/displayReservation)
+![display reservation](screenshots/displayReservation.png)
 
 ### Create new tables:
-![create table](screenshots/createTable)
+![create table](screenshots/createTable.png)
 
 ### Display tables on the dashboard:
-![display table](screenshots/displayTable)
+![display table](screenshots/displayTable.png)
 
 
 ### Edit existing reservations:
-![edit reservation](screenshots/editReservation)
+![edit reservation](screenshots/editReservation.png)
 
 ### Update and display edited reservations:
-![update and display edited reservations](screenshots/updateAndDisplayReservation)
+![update and display edited reservations](screenshots/updateAndDisplayReservation.png)
 
 ### Search reservation by mobile number:
-![search reservation](screenshots/searchReservation)
+![search reservation](screenshots/searchReservation.png)
 
 ### Assign a reservation to a table:
-![assign reservation to table](screenshots/assignReservation)
+![assign reservation to table](screenshots/assignReservation.png)
 
 ### Status of seated reservations and occupied tables update as necessary:
-![updated status of reservation and table](screenshots/updateStatus)
+![updated status of reservation and table](screenshots/updateStatus.png)
 
 
 
