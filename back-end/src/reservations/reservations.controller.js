@@ -3,6 +3,8 @@ const service = require("./reservations.service");
 const hasProperties = require("../errors/hasProperties");
 const hasOnlyValidProperties = require('../errors/hasOnlyValidProperties');
 
+// VALIDATION FUNCTIONS 
+
 const hasRequiredProperties = hasProperties("first_name", "last_name", "mobile_number", 
   "reservation_date", "reservation_time", "people");
 
@@ -82,11 +84,11 @@ const hasRequiredProperties = hasProperties("first_name", "last_name", "mobile_n
 
   function validateReservationFields(req, res, next){
     const {reservation_time, reservation_date, people, status} = res.locals.body;
-    const timeFormatString = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/;
-    const dateFormatString = /^\d{4}-\d{2}-\d{2}$/;
+    const timeFormatString = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/; //regEx for validating proper time formatting
+    const dateFormatString = /^\d{4}-\d{2}-\d{2}$/;                                //regEx for date validation
     const date = new Date(reservation_date);
     const currentTime = new Date();
-    const fullReservationTime = new Date(`${reservation_date}T${reservation_time}`);
+    const fullReservationTime = new Date(`${reservation_date}T${reservation_time}`); //complete time to determine if reservation is in future
 
 
     if(!reservation_time.match(timeFormatString)?.[0]){
@@ -139,6 +141,9 @@ const hasRequiredProperties = hasProperties("first_name", "last_name", "mobile_n
     }
     next();
   } 
+
+//END OF VALIDATION
+
 
 async function list(req, res, next){
   const { mobile_number, date } = req.query;

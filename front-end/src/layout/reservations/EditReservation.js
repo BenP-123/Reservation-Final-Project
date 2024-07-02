@@ -5,6 +5,9 @@ import { formatAsDate, formatAsTime } from "../../utils/date-time";
 import ReservationForm from "./ReservationForm";
 import ErrorAlert from "../ErrorAlert";
 
+//This function allows the user to edit existing reservations, changes are
+//then reflected in the database
+
 export default function EditReservation(){
     const history = useHistory();
     const { reservation_id } = useParams();

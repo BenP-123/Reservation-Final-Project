@@ -2,6 +2,8 @@ import { listReservations } from "../../utils/api";
 import CreateReservationsList from "./CreateReservationsList";
 import { useState } from "react";
 
+//This function handles the searching and displaying of reservaitons by mobile number
+
 export default function SearchReservations(){
     const [reservations, setReservations] = useState([]);
     const [mobileNumber, setMobileNumber] = useState("");

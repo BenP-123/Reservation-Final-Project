@@ -1,5 +1,7 @@
 import PrintReservation from "./PrintReservation";
 
+//This function generates a table to display all active reservations and their properties
+
 export default function CreateReservationsList({ reservations = [] }){
     return(
         <div className="table-responsive">

@@ -2,6 +2,8 @@ import { useHistory } from "react-router-dom";
 import React from "react";
 import ErrorAlert from "../ErrorAlert";
 
+//This function displays a form for the user to create or edit reservations
+
 export default function ReservationForm({ submitHandler, reservation, setReservation, error }){
 
     const handleChange = ({ target }) => {

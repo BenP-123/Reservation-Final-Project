@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import React from "react";
 
+//This function provides a list of valid tables to seat a reservation at, then
+//updates the status of the table and reservation
+
 export default function AssignReservation(){
     const history = useHistory();
     const { reservation_id } = useParams();

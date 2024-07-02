@@ -3,6 +3,9 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createTable } from "../../utils/api";
 
+//This function displays a form for the user to create new tables,
+//then generates a new table upon form submission
+
 export default function NewTable(){
     const [tableName, setTableName] = useState("");
     const [capacity, setCapacity] = useState(0);

@@ -1,3 +1,5 @@
+//Service file for reservation routes, generates Knex postgreSQL queries to send to database
+
 const knex = require("../db/connection");
 
 function create(reservation) {

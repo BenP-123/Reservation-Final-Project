@@ -1,6 +1,9 @@
 import { previous, today, next } from "../utils/date-time";
 import { useHistory } from "react-router-dom";
 
+//This function displays previous, current, and next buttons
+//for selecting a date for the dashboard
+
 export default function DateButtons({ date }){
     const history = useHistory();
 

@@ -1,5 +1,7 @@
 import CancelReservation from "./CancelReservation";
 
+//This function displays individual reservations, along with any relevant action buttons
+
 export default function PrintReservation({ reservation }){
     const {
         first_name,

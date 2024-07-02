@@ -4,6 +4,9 @@ import { createReservation } from "../../utils/api";
 import { formatAsDate, formatAsTime } from "../../utils/date-time";
 import ReservationForm from "./ReservationForm";
 
+//This function displays a form for the user to create a new reservation, 
+//and sends the new reservation to the back end
+
 export default function NewReservation() {
   const history = useHistory();
   const [error, setError] = useState("");

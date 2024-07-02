@@ -1,6 +1,9 @@
 import { useHistory } from "react-router-dom";
 import { updateReservationStatus } from "../../utils/api";
 
+//This function generates a cancel button for reservations, and sets status
+//of reservation to "cancelled" when it is clicked
+
 export default function CancelReservation({ reservation }){
     const history = useHistory();
     const { reservation_date, reservation_id } = reservation;

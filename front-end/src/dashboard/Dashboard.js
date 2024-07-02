@@ -12,7 +12,11 @@ import CreateTablesList from "../layout/tables/CreateTablesList.js";
  * @param date
  *  the date for which the user wants to view reservations.
  * @returns {JSX.Element}
+ * 
+ * This function is responsible for displaying all tables, the reservations for
+ * selected date, and selectors to change the date
  */
+
 function Dashboard({ date }) {
   const [reservations, setReservations] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);

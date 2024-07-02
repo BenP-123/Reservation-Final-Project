@@ -3,6 +3,8 @@ const service = require("./tables.service");
 const hasProperties = require("../errors/hasProperties");
 const hasOnlyValidProperties = require('../errors/hasOnlyValidProperties');
 
+//BEGIN VALIDATION FUNCTIONS
+
 const VALID_PROPERTIES = ["table_name", "reservation_id", "capacity"];
 const tableHasOnlyValidProperties = hasOnlyValidProperties(VALID_PROPERTIES);
 
@@ -126,6 +128,8 @@ function tableIsBigEnough(req, res, next){
   }
   next();
 }
+
+//END VALIDATION FUNCTIONS
 
 async function list(req, res, _next) {
   res.json({ data: await service.listTables() });

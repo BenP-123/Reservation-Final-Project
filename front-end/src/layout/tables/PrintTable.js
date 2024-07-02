@@ -1,6 +1,9 @@
 import ClearTable from "./ClearTable";
 import "./tables.css";
 
+//This function displays individual tables, along with relevant information
+//and action buttons
+
 export default function PrintTable({ table }){
     const { table_name, capacity, table_id, reservation_id } = table;
 

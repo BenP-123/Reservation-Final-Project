@@ -1,3 +1,5 @@
+//Router for reservation routes and operations
+
 const router = require("express").Router();
 const controller = require("./reservations.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");

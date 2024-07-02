@@ -1,6 +1,8 @@
 import { useHistory } from "react-router-dom";
 import { clearTableReservation } from "../../utils/api";
 
+//This function allows the user to clear a table, updating table and reservation status 
+
 export default function ClearTable({ table_id }){
     const history = useHistory();
     async function clickHandler(event){
